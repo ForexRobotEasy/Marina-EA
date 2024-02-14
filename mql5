@@ -1,0 +1,111 @@
+mql5
+//+------------------------------------------------------------------+
+//|                                                    Marina EA.mq5 |
+//|                          Developed by Forex Robot Easy Team       |
+//|                               forexroboteasy.com                  |
+//+------------------------------------------------------------------+
+
+// Define input parameters
+input double initialPrice = 390.0; // Initial price for Marina EA
+input double soldOutPrice = 615.0; // Price after all copies are sold out
+
+int copiesSold = 0; // Counter for number of copies sold
+
+//+------------------------------------------------------------------+
+//| Expert Advisor initialization function                           |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+   // Limit the number of copies available for purchase
+   int maxCopies = 100;
+   
+   // Calculate the current price based on the number of copies sold
+   double currentPrice = copiesSold < maxCopies ? initialPrice : soldOutPrice;
+   
+   // Print the current price to the Experts tab
+   Print('Current price: ', DoubleToString(currentPrice, 2));
+
+   return(INIT_SUCCEEDED);
+}
+
+//+------------------------------------------------------------------+
+//| Expert Advisor start function                                     |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+   // Execute trading strategies based on predefined conditions
+   if (IsTradeAllowed())
+   {
+      // Place trades here
+      // ...
+   }
+}
+
+//+------------------------------------------------------------------+
+//| Check if trading is allowed                                       |
+//+------------------------------------------------------------------+
+bool IsTradeAllowed()
+{
+   // Add your trading conditions here
+   // ...
+   return true; // Trading allowed
+}
+
+//+------------------------------------------------------------------+
+//| Expert Advisor deinitialization function                         |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+{
+   // Perform any necessary cleanup or final actions
+   // ...
+}
+
+//+------------------------------------------------------------------+
+//| Custom backtesting functionality                                  |
+//+------------------------------------------------------------------+
+void Backtest()
+{
+   // Set the desired modeling quality
+   const double desiredModelingQuality = 99.90;
+   
+   // Perform backtesting with the Marina EA
+   // ...
+}
+
+//+------------------------------------------------------------------+
+//| Perform high-quality backtesting                                  |
+//+------------------------------------------------------------------+
+void HighQualityBacktest()
+{
+   // Set the desired modeling quality
+   const double desiredModelingQuality = 99.90;
+   
+   // Check if the current modeling quality meets the desired quality
+   if (ModelingQuality() < desiredModelingQuality)
+   {
+      // Print a warning message to the Experts tab
+      Print('Warning: The current modeling quality is below the desired quality.');
+   }
+   
+   // Perform high-quality backtesting with the Marina EA
+   // ...
+}
+
+//+------------------------------------------------------------------+
+//| Entry point                                                       |
+//+------------------------------------------------------------------+
+void OnStart()
+{
+   // Perform necessary tasks on start
+   // ...
+   
+   // Call the custom backtesting function
+   Backtest();
+   
+   // Call the high-quality backtesting function
+   HighQualityBacktest();
+   
+   // Perform necessary tasks on completion
+   // ...
+}
+
